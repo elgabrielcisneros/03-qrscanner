@@ -1,20 +1,21 @@
 <ion-content [fullscreen]="true" class="ion-padding">
+  <!-- <ion-grid>
+    <ion-row class="scanner-row">
+      <ion-col class="scanner-col"> -->
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-  <ion-button expand="full"
-              shape="round"
-              fill="outline"
-              size="large"
-              color="primary"
-    (click)="scanQRCode()">
-    <ion-label>Scan</ion-label>
-  </ion-button>
-
-      </ion-col>
+  <div class="scanner-container">
+    <ion-button
+      expand="full"
+      shape="round"
+      fill="outline"
+      size="large"
+      color="primary"
+      (click)="scanQrCode()"
+    >
+      <ion-label>Scan</ion-label>
+    </ion-button>
+  </div>
+  <!-- </ion-col>
     </ion-row>
-  </ion-grid>
-
-
+  </ion-grid> -->
 </ion-content>
