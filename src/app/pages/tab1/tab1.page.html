@@ -1,17 +1,21 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- <ion-grid>
+    <ion-row class="scanner-row">
+      <ion-col class="scanner-col"> -->
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="scanner-container">
+    <ion-button
+      expand="full"
+      shape="round"
+      fill="outline"
+      size="large"
+      color="primary"
+      (click)="scanQrCode()"
+    >
+      <ion-label>Scan</ion-label>
+    </ion-button>
+  </div>
+  <!-- </ion-col>
+    </ion-row>
+  </ion-grid> -->
 </ion-content>
