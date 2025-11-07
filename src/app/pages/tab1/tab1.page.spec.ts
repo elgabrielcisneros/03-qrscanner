@@ -15,4 +15,12 @@ describe('Tab1Page', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should scan a QR code', () => {
+    spyOn(component, 'scanQrCode').and.callThrough();
+
+    component.scanQrCode();
+
+    expect(component.scanQrCode()).toHaveSpyInteractions();
+  });
 });
