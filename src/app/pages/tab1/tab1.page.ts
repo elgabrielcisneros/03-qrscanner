@@ -3,6 +3,9 @@ import { IonContent, IonLabel, IonButton } from '@ionic/angular/standalone';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { AlertController } from '@ionic/angular';
 
+// Services
+import { StoreScans } from 'src/app/services/store-scans';
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -13,7 +16,10 @@ export class Tab1Page implements OnInit {
   isSupported = false;
   barcodes: Barcode[] = [];
 
-  constructor(private alertController: AlertController) {}
+  constructor(
+    private alertController: AlertController,
+    private storeScansSrv: StoreScans,
+  ) {}
 
   ngOnInit(): void {
     BarcodeScanner.isSupported().then((result) => {
@@ -31,8 +37,19 @@ export class Tab1Page implements OnInit {
       const { barcodes } = await BarcodeScanner.scan();
       this.barcodes.push(...barcodes);
       console.log('Scanned QR code:', barcodes);
+
+      if (!BarcodeScanner.stopScan) {
+        this.storeScansSrv.storeScanLog(
+          barcodes[0].format,
+          barcodes[0].rawValue,
+        );
+      }
     } catch (error) {
       console.error('Error scanning QR code:', error);
+      this.storeScansSrv.storeScanLog(
+        'QRCode',
+        'https://github.com/capawesome-team/capacitor-mlkit/tree/main/packages/barcode-scanning',
+      );
     }
   }
 

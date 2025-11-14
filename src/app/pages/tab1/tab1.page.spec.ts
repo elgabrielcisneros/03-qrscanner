@@ -23,4 +23,20 @@ describe('Tab1Page', () => {
 
     expect(component.scanQrCode()).toHaveSpyInteractions();
   });
+
+  it('should request permissions', () => {
+    spyOn(component, 'requestPermissions').and.callThrough();
+
+    component.requestPermissions();
+
+    expect(component.requestPermissions()).toHaveSpyInteractions();
+  });
+
+  it('should present an alert', () => {
+    spyOn(component, 'presentAlert').and.callThrough();
+
+    component.presentAlert();
+
+    expect(component.presentAlert()).toHaveSpyInteractions();
+  });
 });
