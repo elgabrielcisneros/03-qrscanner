@@ -1,10 +1,39 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-title>
-      History
-    </ion-title>
+    <ion-title> History </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-list>
+    @for (scan of storeScans.storedScans; track scan) {
+
+    <ion-item-sliding>
+      <ion-item
+        detail="true"
+        lines="none"
+        [button]="true"
+        (click)="onOpenScanHistory(scan)"
+      >
+        <ion-label color="primary">
+          <h2>{{scan.rawValue}}</h2>
+          <p>{{scan.created | date: 'medium'}}</p>
+        </ion-label>
+        <ion-icon slot="start" [name]="scan.icon"></ion-icon>
+      </ion-item>
+      <ion-item-options slot="end">
+        <ion-item-option color="primary" (click)="onShare()">
+          <ion-icon slot="icon-only" name="arrow-redo-outline"></ion-icon>
+        </ion-item-option>
+        <ion-item-option
+          color="danger"
+          expandable="true"
+          (click)="onClearScan()"
+        >
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    }
+  </ion-list>
 </ion-content>

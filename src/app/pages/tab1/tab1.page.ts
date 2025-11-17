@@ -7,6 +7,7 @@ import { AlertController } from '@ionic/angular';
 import { StoreScans } from 'src/app/services/store-scans';
 
 @Component({
+  standalone: true,
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
