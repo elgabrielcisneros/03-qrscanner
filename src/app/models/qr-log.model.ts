@@ -21,27 +21,27 @@ export class QrLog {
 
   private defineType() {
     const guessType = this.rawValue.substring(0, 4);
-    console.info('guessType', guessType);
+    console.info("guessType", guessType);
 
     switch (guessType) {
-      case 'http':
-        this.valueType = 'url';
-        this.icon = 'globe';
+      case "http":
+        this.valueType = "url";
+        this.icon = "globe";
         break;
 
-      case 'tel:':
-        this.valueType = 'tel';
-        this.icon = 'call';
+      case "tel":
+        this.valueType = "tel";
+        this.icon = "call";
         break;
 
-      case 'geo:':
-        this.valueType = 'geo';
-        this.icon = 'pin';
+      case "geo":
+        this.valueType = "geo";
+        this.icon = "pin";
         break;
 
       default:
-        this.valueType = 'not found';
-        this.icon = 'create';
+        this.valueType = "not found";
+        this.icon = "create";
     }
   }
 }
