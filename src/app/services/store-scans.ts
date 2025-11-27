@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { QrLog } from "../models/qr-log.model";
+import { Injectable } from '@angular/core';
+import { QrLog } from '../models/qr-log.model';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class StoreScans {
   // this is a public property
@@ -13,6 +13,6 @@ export class StoreScans {
 
     // moving new scans at the array beginning
     this.storedScans.unshift(newLog);
-    console.info("stored", this.storedScans);
+    console.info('stored', this.storedScans);
   }
 }
