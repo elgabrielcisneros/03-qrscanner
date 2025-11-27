@@ -34,4 +34,16 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+ion-toast.custom-toast {
+  --border-radius: 12px;
+  width: 50%;
+}
+
+ion-toast.custom-toast::part(button) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+}

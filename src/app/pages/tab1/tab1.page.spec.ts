@@ -15,4 +15,28 @@ describe('Tab1Page', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should scan a QR code', () => {
+    spyOn(component, 'scanQrCode').and.callThrough();
+
+    component.scanQrCode();
+
+    expect(component.scanQrCode()).toHaveSpyInteractions();
+  });
+
+  it('should request permissions', () => {
+    spyOn(component, 'requestPermissions').and.callThrough();
+
+    component.requestPermissions();
+
+    expect(component.requestPermissions()).toHaveSpyInteractions();
+  });
+
+  it('should present an alert', () => {
+    spyOn(component, 'presentAlert').and.callThrough();
+
+    component.presentAlert();
+
+    expect(component.presentAlert()).toHaveSpyInteractions();
+  });
 });
