@@ -42,17 +42,15 @@ export class Tab1Page implements OnInit {
         return;
       }
       const { barcodes } = await BarcodeScanner.scan();
-      this.barcodes.push(...barcodes);
-      console.log('Scanned QR code:', barcodes);
 
-      if (!BarcodeScanner.stopScan) {
-        barcodes.forEach((barcode) => {
-          // in this case, store format
-          // & text of the scan for every
-          // element of the array
-          this.storeScansSrv.storeScanLog(barcode.format, barcode.rawValue);
-        });
-      }
+      // if (!BarcodeScanner.stopScan()) {} <-- 🙅 methods are not booleans
+      barcodes.forEach((barcode) => {
+        // in this case, store format
+        // & text of the scan for every
+        // element of the array
+        console.log('Scanned QR code:', barcodes);
+        this.storeScansSrv.storeScanLog(barcode.format, barcode.rawValue);
+      });
     } catch (error) {
       this.presentAlert();
       this.storeScansSrv.storeScanLog(
