@@ -20,7 +20,7 @@ import {
   globe,
   pin,
   call,
-  create,
+  barcode
 } from "ionicons/icons";
 import { StoreScans } from "src/app/services/store-scans";
 import { DatePipe } from "@angular/common";
@@ -54,7 +54,7 @@ export class Tab2Page {
       globe,
       pin,
       call,
-      create,
+      barcode
     });
   }
 
