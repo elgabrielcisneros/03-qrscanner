@@ -30,11 +30,20 @@ export class StoreScans {
   }
 
   async storeScanLog(format: string, rawValue: string) {
+    
+    await this.getStoredScans();
+    
     const newLog = new QrLog(format, rawValue);
-
-    // moving new scans at the array beginning
     this.storedScans.unshift(newLog);
+    // moving new scans at the array beginning
+
     console.info('stored', this.storedScans);
     await this.storage.set('scans', this.storedScans);
+  }
+
+  async clearScans() {
+    this.storedScans = [];
+    await this.storage.remove('scans');
+    console.info('removed', this.storedScans);
   }
 }
