@@ -5,6 +5,9 @@ const config: CapacitorConfig = {
   appName: '03-qr-scanner',
   webDir: 'www',
   plugins: {
+    StatusBar:{
+      overlaysWebView: false,
+    },
     SplashScreen: {
       launchShowDuration: 2000,
       launchFadeOutDuration: 2000,

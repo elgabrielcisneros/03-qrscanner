@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -11,8 +11,10 @@ import {
   IonItemOption,
   IonItemSliding,
   IonIcon,
-} from "@ionic/angular/standalone";
-import { addIcons } from "ionicons";
+  IonButtons,
+  IonButton,
+} from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
 import {
   arrowRedoOutline,
   globeOutline,
@@ -20,17 +22,19 @@ import {
   globe,
   pin,
   call,
-  create,
-} from "ionicons/icons";
-import { StoreScans } from "src/app/services/store-scans";
-import { DatePipe } from "@angular/common";
+  barcode,
+} from 'ionicons/icons';
+import { StoreScans } from 'src/app/services/store-scans';
+import { DatePipe } from '@angular/common';
 
 @Component({
   standalone: true,
-  selector: "app-tab2",
-  templateUrl: "tab2.page.html",
-  styleUrls: ["tab2.page.scss"],
+  selector: 'app-tab2',
+  templateUrl: 'tab2.page.html',
+  styleUrls: ['tab2.page.scss'],
   imports: [
+    IonButtons,
+    IonButton,
     IonIcon,
     IonItemSliding,
     IonItemOption,
@@ -54,15 +58,17 @@ export class Tab2Page {
       globe,
       pin,
       call,
-      create,
+      barcode,
     });
   }
 
   onShare() {}
 
-  onClearScan() {}
+  onClearScan() {
+    this.storeScans.clearScans();
+  }
 
   onOpenScanHistory(scan: any) {
-    console.info("scan", scan);
+    console.info('scan', scan);
   }
 }

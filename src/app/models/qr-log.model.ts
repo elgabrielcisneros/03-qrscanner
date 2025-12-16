@@ -41,7 +41,7 @@ export class QrLog {
 
       default:
         this.valueType = "not found";
-        this.icon = "create";
+        this.icon = "barcode";
     }
   }
 }
