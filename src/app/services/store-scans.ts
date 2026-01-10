@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { QrLog } from '../models/qr-log.model';
 import { Storage } from '@ionic/storage-angular';
+import { OpenScanFormat } from './open-scan-format';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -10,7 +12,10 @@ export class StoreScans {
   // this is a private property
   private _storage: Storage | null = null;
 
-  constructor(private storage: Storage) {
+  constructor(
+    private storage: Storage,
+    private openScanFormat: OpenScanFormat,
+  ) {
     this.init();
     this.getStoredScans();
   }
@@ -30,15 +35,16 @@ export class StoreScans {
   }
 
   async storeScanLog(format: string, rawValue: string) {
-    
     await this.getStoredScans();
-    
+
     const newLog = new QrLog(format, rawValue);
     this.storedScans.unshift(newLog);
     // moving new scans at the array beginning
 
     console.info('stored', this.storedScans);
     await this.storage.set('scans', this.storedScans);
+
+    this.openScanFormat.openScan(newLog);
   }
 
   async clearScans() {
