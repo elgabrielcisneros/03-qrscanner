@@ -13,6 +13,7 @@ import {
   IonIcon,
   IonButtons,
   IonButton,
+  IonText,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
@@ -26,6 +27,7 @@ import {
 } from 'ionicons/icons';
 import { StoreScans } from 'src/app/services/store-scans';
 import { DatePipe } from '@angular/common';
+import { OpenScanFormat } from 'src/app/services/open-scan-format';
 
 @Component({
   standalone: true,
@@ -33,6 +35,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
   imports: [
+    IonText,
     IonButtons,
     IonButton,
     IonIcon,
@@ -50,7 +53,10 @@ import { DatePipe } from '@angular/common';
   ],
 })
 export class Tab2Page {
-  constructor(public storeScans: StoreScans) {
+  constructor(
+    public storeScans: StoreScans,
+    private openScanFormat: OpenScanFormat,
+  ) {
     addIcons({
       arrowRedoOutline,
       trashOutline,
@@ -69,6 +75,7 @@ export class Tab2Page {
   }
 
   onOpenScanHistory(scan: any) {
+    this.openScanFormat.openScan(scan);
     console.info('scan', scan);
   }
 }

@@ -1,12 +1,11 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
     <ion-title> History </ion-title>
-        <ion-buttons slot="end">
+    <ion-buttons slot="end">
       <ion-button color="danger" (click)="onClearScan()">
         <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 
@@ -42,4 +41,17 @@
     </ion-item-sliding>
     }
   </ion-list>
+
+  @if (storeScans.storedScans.length === 0) {
+
+  <div
+    class="no-scans-content ion-text-center ion-justify-content-center ion-padding"
+  >
+    <ion-text color="primary">
+      <h3 class="no-scans-text">
+        No scans found. Scan a QR code to get started.
+      </h3>
+    </ion-text>
+  </div>
+  }
 </ion-content>
